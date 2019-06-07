@@ -2,70 +2,46 @@
 
 import UIKit
 
-var str = "Hello, playground"
+// Types
 
-enum Rank: Int{
-    case ace = 1
-    case two, three, four, five, six, seven, eight, nine, ten
-    case jack, queen, king
-    
-    func simpleDescription() -> String {
-        switch self {
-        case .ace:
-            return "ace"
-        case .jack:
-            return "jack"
-        case .queen:
-            return "queen"
-        case .king:
-            return "king"
-        default:
-            return String(self.rawValue)
-        }
-    }
-}
+let doublePi = 3.14
+let intPi = Int(doublePi)
+let roundedPi = round(doublePi)
 
-let ace = Rank.ace
-let aceRawValue = ace.rawValue
-print(ace)
-print(aceRawValue)
+let offset = 0.75
+let intPiWithOffset = Int(doublePi + offset)
+let roundedPiWithOffset = round(doublePi + offset)
 
-if let convertedRank = Rank(rawValue: 23){
-    let threeDescription = convertedRank.simpleDescription()
-}
-else {
-    print("no value found")
-}
+let negativePi = -doublePi
+let negativeIntPi = Int(negativePi)
+let roundedNegativePi = round(negativePi)
 
-enum Suit {
-    case spades, hearts, diamonds, clubs
-    
-    func simpleDescription() -> String {
-        switch self {
-        case .spades:
-            return "spades"
-        case .hearts:
-            return "hearts"
-        case .diamonds:
-            return "diamonds"
-        case .clubs:
-            return "clubs"
-        }
-    }
-    func color() -> String {
-        switch self{
-        case .hearts, .diamonds:
-            return "red"
-        case .clubs, .spades:
-            return "black"
-        }
-    }
-}
+let negativeIntPiWithOffset = Int(negativePi - offset)
+let roundedNegativePiWithOffset = round(negativePi - offset)
 
-let hearts = Suit.hearts
-let heartsDescription = hearts.simpleDescription()
-let heartsColor = hearts.color()
+// ---------------
+// Type Aliases
 
-let clubs = Suit.clubs
-let clubsDescription = clubs.simpleDescription()
-let clubsColor = clubs.color()
+typealias AudioSample = UInt16
+var maxAmplitudeFound = AudioSample.min
+print(maxAmplitudeFound)
+
+// ----------------
+// Tuples
+
+let http404Error = (404, "Not Found")
+
+let (statusCode, statusMessage) = http404Error
+print("Error: \(statusCode) and \(statusMessage)")
+
+// OR
+let (justStatusCode, _) = http404Error
+print("\(justStatusCode)")
+
+// OR
+print("\(http404Error.0)")
+
+let http200Status = (statusCode: 200, description: "OK")
+print("\(http200Status.statusCode)")
+
+
